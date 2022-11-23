@@ -1,0 +1,21 @@
+﻿2
+1,10,Praia de Ponta Negra
+2,8,Bosque dos Namorados
+3,10,Forte dos Reis Magos
+4,9,Dunas de Genipabu
+5,8,Praia de Genipabu
+6,9,Parrachos de Maracajaú
+7,5,Cajueiro de Pirangi
+8,3,Praia do Meio
+9,7,Lagoa de Jacumã
+10,6,Lagoa de Pitangui
+11,4,Praia da Barra de Tabatinga
+12,8,Midway Mall
+13,2,Ponte Newton Navaro
+14,7,Casa Câmara Cascudo
+15,6,Parque da Cidade Dom Nivaldo Monte
+16,3,Praça do Relógio do Sol
+17,4,Farol da Mãe Luiza
+18,5,Centro de Turismo de Natal
+19,6,Praia dos Artistas
+20,1,Praia de Areia Preta

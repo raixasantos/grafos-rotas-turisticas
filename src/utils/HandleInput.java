@@ -12,7 +12,7 @@ public class HandleInput {
      * @param message The message to display in required field.
      * @return String Path received.
      */
-    public static String handleArgsAttractions(String[] args, String message) {
+    public static String handleArgsInput(String[] args, String message) {
         String path = "";
         if (args.length == 0) {
             printAndExit(message);
@@ -41,7 +41,7 @@ public class HandleInput {
      * Print error message and exit program.
      * @param message Message to print.
      */
-    private static void printAndExit(String message) {
+    public static void printAndExit(String message) {
         System.out.println(message);
         System.exit(-1);
     }
