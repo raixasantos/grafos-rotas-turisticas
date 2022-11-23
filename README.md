@@ -21,7 +21,7 @@ javac src/pcvq/Solution.java
 1. Para realizar a execução no console, utilize os seguintes comandos:
 
 ```bash
-java src/pcvq/Solution.java <caminho-do-arquivo-teste>
+java src/pcvq/Solution <caminho-do-arquivo-teste>
 ```
 
 ## Testes
