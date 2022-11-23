@@ -1,17 +1,23 @@
 package src.pcvq;
 
+import java.io.FileNotFoundException;
+
+import src.utils.HandleFile;
 import src.utils.HandleInput;
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // tratar os args
+        // HandleInput
+        String pathAttractions = HandleInput.handleArgsInput(args, "Arguments: path to attractions's file required!");
+        Graph graphReceived = HandleFile.readAttractionsFile(pathAttractions);
+        // System.out.println(graphReceived.toString());
+
         // chamar método da heurística e do cálculo de tempo
         // exibir resultado e gerar arquivo
 
 
         // teste de classes:
-        // HandleInput
-        HandleInput.handleArgsAttractions(args, "Arguments: path to attractions's file required!");
 
         // Attraction
         System.out.println("---------------Attraction----------------");
