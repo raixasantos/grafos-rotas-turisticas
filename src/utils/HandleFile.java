@@ -17,16 +17,8 @@ public class HandleFile {
      * @throws FileNotFoundException
      */
     public static Graph readAttractionsFile(String path) throws FileNotFoundException {
+        Scanner inputFile = readFile(path);
         Graph graph = new Graph();
-
-        Scanner inputFile = new Scanner(System.in);
-        File file = new File(path);
-        inputFile = new Scanner(file);
-
-        if(file.length() == 0) {
-            HandleInput.printAndExit("File empty!");
-        }
-
         String currentLine = inputFile.nextLine();
         Integer numAttractions = Integer.parseInt(currentLine);
         graph = new Graph(numAttractions);
@@ -41,12 +33,49 @@ public class HandleFile {
                 Integer scoreSatisfaction = Integer.parseInt(attractionAtributes[1]);
                 attraction.setPointSatisfaction(scoreSatisfaction);
                 attraction.setName(attractionAtributes[2]);
+                graph.addAttraction(attraction);
             } else {
                 HandleInput.printAndExit("Necessary more arguments!");
             }
-        }	
-        
+        }	        
         return graph;
+    }
+
+    public static void readDistancesFile(Graph graph, String path) throws FileNotFoundException {
+        Scanner inputFile = readFile(path);
+        String currentLine = "";
+        
+        Integer row = 0;
+        while(inputFile.hasNextLine()) {
+            currentLine = inputFile.nextLine();
+            String[] distances = currentLine.split(" ");
+            if(distances.length == graph.getNumAttractions()){
+                for(int column = 0; column < distances.length; column++) {
+                    Integer distance = Integer.parseInt(distances[column]);
+                    graph.addDistance(row, column, distance);
+                }
+            } else {
+                HandleInput.printAndExit("Necessary more arguments!");
+            }
+            row++;
+        }	
+        if(row < graph.getNumAttractions()) {
+            HandleInput.printAndExit("Necessary more arguments!");
+        }
+    }
+
+    private static Scanner readFile(String path) throws FileNotFoundException {
+        Scanner inputFile = new Scanner(System.in);
+        File file = new File(path);
+        isFileEmpty(file);
+        inputFile = new Scanner(file);
+        return inputFile;
+    }
+
+    private static void isFileEmpty(File file) {
+        if(file.length() == 0) {
+            HandleInput.printAndExit("File empty!");
+        }
     }
 
     /** 
@@ -55,9 +84,11 @@ public class HandleFile {
      * @param route The route to be written on the file.
      * @throws IOException
      */
-    public static void generateRouteFile(String path, String route) throws IOException {
+    public static void generateRouteFile(String route, Long time) throws IOException {
+        String path = ""; // uma pasta output no projeto
         FileWriter fileWriter = new FileWriter(path, true);
         BufferedWriter buffWrite = new BufferedWriter(fileWriter);
+        buffWrite.write(time + "\n");
         buffWrite.write(route + "\n");
         buffWrite.close();
     }
