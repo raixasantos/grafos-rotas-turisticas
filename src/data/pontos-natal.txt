@@ -1,4 +1,4 @@
-2
+20
 1,10,Praia de Ponta Negra
 2,8,Bosque dos Namorados
 3,10,Forte dos Reis Magos
