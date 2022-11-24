@@ -111,10 +111,13 @@ public class HandleFile {
         FileWriter fileWriter = new FileWriter(path, true);
         BufferedWriter buffWrite = new BufferedWriter(fileWriter);
         buffWrite.write("Route builded in " + time + "seconds.\n");
+        buffWrite.write("Route with " + route.getScoreSatisfaction() + " points of satisfaction.\n");
         buffWrite.write("Route with " + route.getDistance() + "m. \n");
         buffWrite.write("Route: \n");
+        Integer order = 1;
         for(Attraction attraction: route.getRoute()) {
-            buffWrite.write(attraction.getName() + " ");
+            buffWrite.write(order + "º: " + attraction.getName() + "\n");
+            order++;
         }
         buffWrite.close();
         System.out.println("Route and others informations available on: " + path + ".");
