@@ -1,8 +1,5 @@
 # Rotas turísticas com locais ponderados na cidade de Natal/RN
 
-## Sobre
-
-
 ## Ferramentas utilizadas
 
 As ferramentas utilizadas foram: 
@@ -33,7 +30,13 @@ As ferramentas utilizadas foram:
     <caminho-do-arquivo>
     ```
 
+    2.3. Por fim, é solicitado que digite o valor de satisfação a ser atingido.
+    ```bash
+    Enter the satisfaction score to be achieved: 
+    ```
+
 ## Testes
+Na pasta data, é possível encontrar os dados para serem utilizados na execução do algoritmo.
 
 ## Desenvolvedoras
 - [Neylane Lopes](https://github.com/neylanepl) 
