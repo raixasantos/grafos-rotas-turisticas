@@ -24,6 +24,14 @@ public class Graph {
 		}
     }
 
+    public boolean areAdjacents(Attraction first, Attraction second) {
+        Boolean result = false;
+        Integer distance = this.distances[first.getId()-1][second.getId()-1];
+        if(distance != -1)
+            result = true;
+        return result;
+    }
+
     public Integer getNumAttractions() {
         return this.numAttractions;
     }
@@ -42,6 +50,10 @@ public class Graph {
 
     public Integer[][] getDistances() {
         return this.distances;
+    }
+
+    public Integer getDistance(Integer row, Integer column) {
+        return this.distances[row][column];
     }
 
     public void addDistance(Integer row, Integer column, Integer distance) {
