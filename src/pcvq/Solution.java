@@ -12,9 +12,11 @@ public class Solution {
 
         String pathDistances = HandleInput.readCommandLine("Enter the path to file with distances between attractions: ");
         HandleFile.readDistancesFile(graphReceived, pathDistances);
-        System.out.println(graphReceived.toString()); // TODO: show graph received with a better view
 
-        Route route = new Route(); // TODO: add scoreSatisfaction in constructor
+        Integer scoreSatisfaction = 0;
+        scoreSatisfaction = HandleInput.readCommandLine();
+
+        Route route = new Route(scoreSatisfaction);
         long start = System.currentTimeMillis();
         Pcvq.findRoute(graphReceived, route);
         long elapsed = System.currentTimeMillis() - start;

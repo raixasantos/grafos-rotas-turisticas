@@ -46,9 +46,16 @@ public class HandleInput {
         String path = "";
         System.out.println(message);
         path = readLine.nextLine();
-        readLine.close();
         verifyPath(path);
+
         return path;
+    }
+
+    public static Integer readCommandLine() {
+        System.out.println("Enter the satisfaction score to be achieved: ");
+        Integer score = readLine.nextInt();
+        readLine.close();
+        return score;
     }
     
     /** 

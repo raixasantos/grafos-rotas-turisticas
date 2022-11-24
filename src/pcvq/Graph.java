@@ -1,6 +1,7 @@
 package src.pcvq;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Graph {
     private Integer numAttractions;
@@ -24,12 +25,29 @@ public class Graph {
 		}
     }
 
-    public boolean areAdjacents(Attraction first, Attraction second) {
+    public boolean areAdjacents(Integer indexFirst, Integer indexSecond) {
         Boolean result = false;
-        Integer distance = this.distances[first.getId()-1][second.getId()-1];
+        Integer distance = this.distances[indexFirst][indexSecond];
         if(distance != -1)
             result = true;
         return result;
+    }
+
+    public List<Integer> getAdjacents(Integer indexAttraction) {
+        List<Integer> attractionsAdjacents = new ArrayList<Integer>();
+        this.attractions.forEach(attraction -> {
+            Integer indexCurrAttraction = attraction.getId()-1;
+            if(indexCurrAttraction != indexAttraction) {
+                if(this.areAdjacents(indexAttraction, indexCurrAttraction)) {
+                    attractionsAdjacents.add(indexCurrAttraction) ;
+                }
+            }
+        });
+        return attractionsAdjacents;
+    }
+
+    public Attraction getAttractionByIndex(Integer indexAttraction) {
+        return this.attractions.get(indexAttraction);
     }
 
     public Integer getNumAttractions() {
@@ -46,6 +64,10 @@ public class Graph {
 
     public void addAttraction(Attraction attraction) {
         this.attractions.add(attraction);
+    }
+
+    public void removeAttraction(Attraction attraction) {
+        this.attractions.remove(attraction);
     }
 
     public Integer[][] getDistances() {

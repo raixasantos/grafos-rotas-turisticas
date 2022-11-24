@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Route {
     private List<Attraction> route = new ArrayList<Attraction>();
-    private Integer scoreSatisfaction;
+    private Integer scoreSatisfaction = 0;
     private Integer distance = 0;
 
     public Route() {
@@ -21,6 +21,14 @@ public class Route {
 
     public void setRoute(List<Attraction> route) {
         this.route = route;
+    }
+
+    public void addAttraction(Attraction attraction) {
+        this.route.add(attraction);
+    }
+
+    public void removeAttraction(Attraction attraction) {
+        this.route.remove(attraction);
     }
 
     public Integer getScoreSatisfaction() {
