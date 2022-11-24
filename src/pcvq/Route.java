@@ -6,6 +6,7 @@ import java.util.List;
 public class Route {
     private List<Attraction> route = new ArrayList<Attraction>();
     private Integer scoreSatisfaction;
+    private Integer distance = 0;
 
     public Route() {
     }
@@ -30,11 +31,20 @@ public class Route {
         this.scoreSatisfaction = scoreSatisfaction;
     }
 
+    public Integer getDistance() {
+        return this.distance;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
+    }
+
     @Override
     public String toString() {
         return "Rota com" +
             " route='" + getRoute().toString() + "'" +
-            ", scoreSatisfaction='" + getScoreSatisfaction() + "'";
+            ", scoreSatisfaction='" + getScoreSatisfaction() + "'" +
+            ", distance='" + getDistance() + "'";
     }
 
 }
