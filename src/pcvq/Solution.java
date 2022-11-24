@@ -13,14 +13,16 @@ public class Solution {
 
         String pathDistances = HandleInput.readCommandLine("Enter the path to file with distances between attractions: ");
         HandleFile.readDistancesFile(graphReceived, pathDistances);
-        System.out.println(graphReceived.toString()); // show graph received
+        // System.out.println(graphReceived.toString()); // show graph received
 
         // chamar método da heurística e do cálculo de tempo
+        Route route = new Route(); // add scoreSatisfaction in constructor
         long start = System.currentTimeMillis();
 
         long elapsed = System.currentTimeMillis() - start;
 
-        // exibir resultado e gerar arquivo
-        // HandleFile.generateRouteFile(pathDistances, elapsed);
+        // exibir resultado e gerar arquivo 
+        // TODO: mudar tipo a ser impresso pela rota
+        HandleFile.generateRouteFile(route, elapsed);
     }
 }

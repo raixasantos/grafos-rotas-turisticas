@@ -5,10 +5,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import src.pcvq.Attraction;
 import src.pcvq.Graph;
+import src.pcvq.Route;
 
 public class HandleFile {
     /**
@@ -84,13 +87,27 @@ public class HandleFile {
      * @param route The route to be written on the file.
      * @throws IOException
      */
-    public static void generateRouteFile(String route, Long time) throws IOException {
-        String path = ""; // uma pasta output no projeto
+    public static void generateRouteFile(Route route, Long time) throws IOException {
+        String path = generatePath();
+        File file = new File(path);
+        file.createNewFile();
         FileWriter fileWriter = new FileWriter(path, true);
         BufferedWriter buffWrite = new BufferedWriter(fileWriter);
-        buffWrite.write(time + "\n");
-        buffWrite.write(route + "\n");
+        buffWrite.write("Route builded in " + time + "seconds.\n");
+        buffWrite.write("Route with " + route.getDistance() + "m. \n");
+        buffWrite.write("Route: \n");
+        for(Attraction attraction: route.getRoute()) {
+            buffWrite.write(attraction.getName() + " ");
+        }
         buffWrite.close();
+        System.out.println("Route and others informations available on: " + path + ".");
+    }
+
+    private static String generatePath() {
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd'at'HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        String path = "src/output/route-" + formatter.format(date) + ".txt";
+        return path;
     }
     
 }
