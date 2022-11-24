@@ -67,6 +67,23 @@ public class HandleFile {
         }
     }
 
+    private static void altReadDistancesFile(Graph graph, String path) throws FileNotFoundException {
+        Scanner inputFile = readFile(path);
+        String currentLine = "";        
+        while(inputFile.hasNextLine()) {
+            currentLine = inputFile.nextLine();
+            String[] attractionsAndDistances = currentLine.split(" ");
+            if(attractionsAndDistances.length == 3){
+                Integer row = Integer.parseInt(attractionsAndDistances[0]);
+                Integer column = Integer.parseInt(attractionsAndDistances[1]);
+                Integer distance = Integer.parseInt(attractionsAndDistances[2]);
+                graph.addDistance(row, column, distance);
+            } else {
+                HandleInput.printAndExit("Necessary more arguments!");
+            }
+        }
+    }
+
     private static Scanner readFile(String path) throws FileNotFoundException {
         Scanner inputFile = new Scanner(System.in);
         File file = new File(path);
